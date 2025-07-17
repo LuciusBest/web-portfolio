@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "live-server"
+    "dev": "live-server",
+    "generate": "node scripts/generateProjects.js"
   },
   "keywords": [],
   "author": "",

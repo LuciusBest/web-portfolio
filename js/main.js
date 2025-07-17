@@ -7,49 +7,24 @@ async function initGallery() {
   const gallery = document.getElementById('gallery');
   if (!gallery) return;
 
-  const basePath = 'assets/';
-
   try {
-    const folders = await getSubfolders(basePath);
-    for (const folder of folders) {
-      try {
-        const folderPath = `${basePath}${folder}/`;
-        const images = await getImages(folderPath);
-        const project = createProject(images, folderPath);
-        gallery.appendChild(project);
-      } catch (err) {
-        console.error(`Failed to load images for ${folder}:`, err);
-      }
+    const projects = await loadProjects();
+    for (const { folder, images } of projects) {
+      const folderPath = `assets/${folder}/`;
+      const project = createProject(images, folderPath);
+      gallery.appendChild(project);
     }
   } catch (err) {
     console.error('Failed to initialize gallery:', err);
   }
 }
 
-async function fetchHTML(url) {
-  const response = await fetch(url);
+async function loadProjects() {
+  const response = await fetch('data/projects.json');
   if (!response.ok) {
-    throw new Error(`Fetch failed for ${url}: ${response.status}`);
+    throw new Error(`Failed to fetch project list: ${response.status}`);
   }
-  return response.text();
-}
-
-function parseLinks(html, filter) {
-  const doc = new DOMParser().parseFromString(html, 'text/html');
-  return [...doc.querySelectorAll('a')]
-    .map(a => a.getAttribute('href'))
-    .filter(href => href && filter(href));
-}
-
-async function getSubfolders(path) {
-  const html = await fetchHTML(path);
-  return parseLinks(html, href => href.endsWith('/') && href !== '../')
-    .map(href => href.replace(/\/$/, ''));
-}
-
-async function getImages(path) {
-  const html = await fetchHTML(path);
-  return parseLinks(html, href => /\.(png|jpe?g|gif|webp|svg)$/i.test(href));
+  return response.json();
 }
 
 function createProject(images, folderPath) {
@@ -66,4 +41,5 @@ function createProject(images, folderPath) {
 
   return container;
 }
+
 
