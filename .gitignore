@@ -19,3 +19,6 @@
 *.mkv
 *.mpeg
 *.mpg
+
+# Node modules
+node_modules/
