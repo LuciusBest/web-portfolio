@@ -2,22 +2,27 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    text-align: center;
 }
 
-#gallery {
+main {
     display: flex;
     flex-direction: column;
 }
 
-.project {
+.project-container {
     height: 100dvh;
+    overflow: hidden;
+}
+
+.image-row {
     display: flex;
     flex-direction: row;
+    height: 100%;
     overflow-x: auto;
 }
 
-.project img {
-    height: 100dvh;
+.image-row img {
+    height: 100%;
     width: auto;
+    flex-shrink: 0;
 }
