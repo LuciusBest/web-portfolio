@@ -4,3 +4,20 @@ body {
     padding: 0;
     text-align: center;
 }
+
+#gallery {
+    display: flex;
+    flex-direction: column;
+}
+
+.project {
+    height: 100dvh;
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+}
+
+.project img {
+    height: 100dvh;
+    width: auto;
+}

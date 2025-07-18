@@ -17,3 +17,4 @@ fi
 
 ln -s "$TARGET" "$LINK"
 echo "Created symlink '$LINK' -> '$TARGET'"
+
