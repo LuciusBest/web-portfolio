@@ -12,6 +12,7 @@ main {
     scroll-snap-type: y mandatory;
 }
 
+/* 
 .project-container {
     height: 100dvh;
     overflow: hidden;
@@ -31,4 +32,4 @@ main {
     width: auto;
     flex-shrink: 0;
     scroll-snap-align: start;
-}
+} */

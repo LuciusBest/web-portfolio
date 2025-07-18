@@ -1,0 +1,19 @@
+.main_container {
+    box-sizing: border-box;
+    height: 100dvh;
+    width: 100dvw;
+    display: flex;
+    flex-direction: column;
+}
+
+.project_container {
+    height: 100dvh;
+    width: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+img {
+    height: 100%;
+    width: fit-content;
+}
