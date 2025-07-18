@@ -8,8 +8,15 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!res.ok) return [];
       const text = await res.text();
       const doc = new DOMParser().parseFromString(text, 'text/html');
+      const base = new URL(url, window.location.href);
       return Array.from(doc.querySelectorAll('a'))
-        .map(a => a.getAttribute('href'))
+        .map(a => {
+          const href = new URL(a.getAttribute('href'), base).pathname;
+          const relative = href.startsWith(base.pathname)
+            ? href.slice(base.pathname.length)
+            : href.replace(/^\//, '');
+          return relative;
+        })
         .filter(h => h && !h.startsWith('?') && h !== '../');
     } catch (e) {
       console.error(e);
