@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 set -e
 
 LINK="assets"
@@ -17,4 +16,3 @@ fi
 
 ln -s "$TARGET" "$LINK"
 echo "Created symlink '$LINK' -> '$TARGET'"
-
