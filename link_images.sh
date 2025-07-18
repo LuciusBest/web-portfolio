@@ -2,7 +2,7 @@
 set -e
 
 LINK="assets"
-TARGET="../Local_Site_Images"
+TARGET="/Users/paulpaturel/Documents/PAUL/06_PERSO/SITE/Local_Site_Images"
 
 if [ -L "$LINK" ]; then
     echo "Symlink '$LINK' already exists."
